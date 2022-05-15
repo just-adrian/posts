@@ -4,7 +4,7 @@ namespace posts.dal
 {
     public class Post
     {
-        public Guid Id { get; }
+        public int Id { get; }
 
         public string Author { get; }
 
@@ -12,7 +12,7 @@ namespace posts.dal
 
         public string Content { get; }
 
-        public Post(Guid id, string author, string title, string content)
+        public Post(int id, string author, string title, string content)
         {
             Id = id;
             Author = author;
