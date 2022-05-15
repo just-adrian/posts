@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using posts.api;
 using posts.dal;
 
 namespace posts
@@ -28,6 +29,7 @@ namespace posts
         {
             services.AddControllers();
             services.AddScoped<IPostRepository, PostRepository>();
+            services.Configure<Settings>(Configuration.GetSection("Settings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +45,8 @@ namespace posts
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseHeaderCheckMiddleware();
 
             app.UseEndpoints(endpoints =>
             {

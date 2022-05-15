@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using posts.dal;
 
 namespace posts.Controllers
@@ -16,9 +15,9 @@ namespace posts.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Post> GetAll()
+        public IActionResult GetAll()
         {
-            return _postRepository.GetAll();
+            return Ok(_postRepository.GetAll());
         }
     }
 }
