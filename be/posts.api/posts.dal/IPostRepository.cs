@@ -5,7 +5,7 @@ namespace posts.dal
 {
     public interface IPostRepository
     {
-        IList<Post> GetAll();
+        IList<Post> Get(PaginationValues paginationValues);
 
         bool Delete(Guid id);
     }

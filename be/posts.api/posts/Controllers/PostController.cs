@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using posts.api;
 using posts.dal;
 
 namespace posts.Controllers
@@ -15,9 +16,9 @@ namespace posts.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult Get([FromQuery] PaginationValues paginationValues)
         {
-            return Ok(_postRepository.GetAll());
+            return Ok(_postRepository.Get(paginationValues));
         }
     }
 }

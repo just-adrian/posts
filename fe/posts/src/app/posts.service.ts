@@ -9,7 +9,7 @@ import { Post } from './post';
 export class PostsService {
   constructor(private http: HttpClient) { }
 
-  getAllPosts(){
-    return this.http.get<Post[]>(`${environment.baseUrl}/api/post`);
+  getPosts(page: number){
+    return this.http.get<Post[]>(`${environment.baseUrl}/api/post?number=${page}`);
   }
 }
