@@ -18,7 +18,7 @@ namespace posts.api
 
         public Task Invoke(HttpContext httpContext)
         {
-            if (httpContext.Request.Headers.ContainsKey("api-key") && httpContext.Request.Headers["api-key"] == _settings.ApiKey)
+            if (httpContext.Request.Method == HttpMethods.Options || httpContext.Request.Headers.ContainsKey("api-key") && httpContext.Request.Headers["api-key"] == _settings.ApiKey)
             {
                 return _next(httpContext);
             }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apikey: "123ABC"
+  apikey: "123ABC",
+  baseUrl: "https://localhost:44304"
 };
 
 /*

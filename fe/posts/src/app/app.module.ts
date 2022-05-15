@@ -5,6 +5,8 @@ import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostComponent } from './post/post.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderInterceptor } from './header.interceptor';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,14 @@ import { PostComponent } from './post/post.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ClarityModule
+    ClarityModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HeaderInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
