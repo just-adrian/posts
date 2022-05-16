@@ -9,7 +9,7 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit, OnDestroy {
-
+  filter: string = "";
   posts: Post[] = [];
   subscriptions : Subscription[] = [];
   page: number = 1;
@@ -23,7 +23,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   getPosts(){
-    let s = this.postService.getPosts(this.page).subscribe(x =>{
+    let s = this.postService.getPosts(this.page, this.filter).subscribe(x =>{
       this.posts = this.posts.concat(x);
     });
 
@@ -38,7 +38,6 @@ export class PostListComponent implements OnInit, OnDestroy {
     if (confirm && this.deletedPost) {
       let dp = this.postService.deletePost(this.deletedPost.id).subscribe(x =>
         {
-
           this.posts.forEach((value,index)=>{
             if(value.id==this.deletedPost!.id){
               this.posts.splice(index,1);
@@ -49,6 +48,14 @@ export class PostListComponent implements OnInit, OnDestroy {
 
       this.subscriptions.push(dp);
     }
+  }
+
+  onFilter(){
+    let s = this.postService.getPosts(this.page, this.filter).subscribe(x =>{
+      this.posts = x;
+    });
+
+    this.subscriptions.push(s);
   }
 
   ngOnDestroy(): void {
@@ -62,5 +69,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   onScroll() {
     this.page++;
     this.getPosts();
+  }
+
+  trackItem (index: number, item: Post) {
+    return item.id;
   }
 }

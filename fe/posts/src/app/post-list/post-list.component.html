@@ -1,10 +1,11 @@
+<input clrInput placeholder="My input" name="input" [(ngModel)]="filter" [ngModelOptions]="{ updateOn: 'blur' }" (ngModelChange) ="onFilter()"/>
 <div class="post-container"
 infiniteScroll
 [infiniteScrollDistance]="1"
 [infiniteScrollThrottle]="100"
 [scrollWindow]="false"
 (scrolled)="onScroll()">
-  <ng-container *ngFor="let post of posts">
+  <ng-container *ngFor="let post of posts; trackBy: trackItem">
     <app-post (deletedPost)="setDeletedPost($event)" [post]="post"></app-post>
   </ng-container>
 </div>

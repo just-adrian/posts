@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './header.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
     InfiniteScrollModule,
     BrowserAnimationsModule,
     ClarityModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

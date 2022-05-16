@@ -9,8 +9,8 @@ import { Post } from './post';
 export class PostsService {
   constructor(private http: HttpClient) { }
 
-  getPosts(page: number){
-    return this.http.get<Post[]>(`${environment.baseUrl}/api/post?number=${page}`);
+  getPosts(page: number, filter: string){
+    return this.http.get<Post[]>(`${environment.baseUrl}/api/post?number=${page}&filter=${filter}`);
   }
 
   deletePost(postId: number){
