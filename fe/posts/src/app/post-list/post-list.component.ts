@@ -14,6 +14,8 @@ export class PostListComponent implements OnInit, OnDestroy {
   subscriptions : Subscription[] = [];
   page: number = 1;
 
+  deletedPost: Post | null = null;
+
   constructor(private postService: PostsService) { }
 
   ngOnInit(): void {
@@ -23,10 +25,30 @@ export class PostListComponent implements OnInit, OnDestroy {
   getPosts(){
     let s = this.postService.getPosts(this.page).subscribe(x =>{
       this.posts = this.posts.concat(x);
-      console.log(this.posts);
     });
 
     this.subscriptions.push(s);
+  }
+
+  setDeletedPost(post: any){
+    this.deletedPost = post;
+  }
+
+  onDeletePost(confirm: any){
+    if (confirm && this.deletedPost) {
+      let dp = this.postService.deletePost(this.deletedPost.id).subscribe(x =>
+        {
+
+          this.posts.forEach((value,index)=>{
+            if(value.id==this.deletedPost!.id){
+              this.posts.splice(index,1);
+            }
+          });
+          this.deletedPost = null;
+        });
+
+      this.subscriptions.push(dp);
+    }
   }
 
   ngOnDestroy(): void {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Post } from '../post';
 
 @Component({
@@ -9,10 +9,13 @@ import { Post } from '../post';
 export class PostComponent implements OnInit {
 
   @Input() post!: Post;
-
+  @Output() deletedPost = new EventEmitter<Post>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  deletePost(post: Post){
+    this.deletedPost.emit(post);
+  }
 }

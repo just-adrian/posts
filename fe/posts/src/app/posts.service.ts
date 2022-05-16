@@ -12,4 +12,8 @@ export class PostsService {
   getPosts(page: number){
     return this.http.get<Post[]>(`${environment.baseUrl}/api/post?number=${page}`);
   }
+
+  deletePost(postId: number){
+    return this.http.delete(`${environment.baseUrl}/api/post/${postId}`);
+  }
 }

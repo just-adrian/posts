@@ -8,12 +8,14 @@ import { PostComponent } from './post/post.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './header.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponent,
-    PostComponent
+    PostComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,

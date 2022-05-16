@@ -1,0 +1,14 @@
+<clr-modal [clrModalOpen]="postId !== null" [clrModalClosable]="false">
+  <h3 class="modal-title">Delete post:{{ postId }}!</h3>
+  <div class="modal-body">
+    <p>Do you want remove post: {{ postId }}?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="disagree()">
+      No
+    </button>
+    <button type="button" class="btn btn-danger" (click)="agree()">
+      Yes
+    </button>
+  </div>
+</clr-modal>
