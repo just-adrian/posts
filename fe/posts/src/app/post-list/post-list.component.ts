@@ -39,7 +39,6 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   onScroll() {
     this.page++;
-    console.log('a');
     this.getPosts();
   }
 }
