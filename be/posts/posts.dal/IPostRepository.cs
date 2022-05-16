@@ -7,6 +7,6 @@ namespace posts.dal
     {
         IList<Post> Get(PaginationValues paginationValues);
 
-        bool Delete(Guid id);
+        bool Delete(int id);
     }
 }
