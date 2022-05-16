@@ -17,8 +17,12 @@ export class PostListComponent implements OnInit, OnDestroy {
   constructor(private postService: PostsService) { }
 
   ngOnInit(): void {
+    this.getPosts();
+  }
+
+  getPosts(){
     let s = this.postService.getPosts(this.page).subscribe(x =>{
-      this.posts = x;
+      this.posts = this.posts.concat(x);
       console.log(this.posts);
     });
 
@@ -31,5 +35,11 @@ export class PostListComponent implements OnInit, OnDestroy {
         x.unsubscribe();
       }
     });
+  }
+
+  onScroll() {
+    this.page++;
+    console.log('a');
+    this.getPosts();
   }
 }

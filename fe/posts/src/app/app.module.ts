@@ -7,6 +7,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostComponent } from './post/post.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './header.interceptor';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HeaderInterceptor } from './header.interceptor';
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     BrowserAnimationsModule,
     ClarityModule,
     HttpClientModule
